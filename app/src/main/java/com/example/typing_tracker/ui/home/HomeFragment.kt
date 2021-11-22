@@ -15,7 +15,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(){
     }
 
     override fun setUpBinding() {
-
+        binding.countUpTimer.start()
     }
 
 
