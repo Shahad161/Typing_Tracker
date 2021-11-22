@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.typing_tracker.ui.history.HistoryFragment"
+        android:name="com.example.typing_tracker.ui.statistics.StatisticsFragment"
         android:label="HistoryFragment"
-        tools:layout="@layout/fragment_history"/>
+        tools:layout="@layout/fragment_statistics"/>
 </navigation>

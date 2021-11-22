@@ -4,12 +4,19 @@
 
     <data>
 
+        <variable
+            name="item"
+            type="com.example.typing_tracker.ui.statistics.StatisticsRecyclerAdapter" />
+
+        <variable
+            name="listener"
+            type="com.example.typing_tracker.ui.statistics.StatisticsRecyclerAdapter" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.history.HistoryFragment">
+        tools:context=".ui.statistics.StatisticsFragment">
 
         <TextView
             android:layout_width="match_parent"
