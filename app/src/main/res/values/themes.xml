@@ -18,4 +18,10 @@
         <item name="cornerSize">4dp</item>
     </style>
 
+
+    <style name="SplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:statusBarColor" >@color/primary_background</item>
+    </style>
+
 </resources>
