@@ -59,7 +59,7 @@
             android:spinnerMode="dropdown"
             android:textSize="16sp"
             app:entries="@{true}"
-            app:layout_constraintBottom_toTopOf="@+id/start_btn"
+            app:layout_constraintBottom_toTopOf="@+id/start_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             />
@@ -75,7 +75,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/start_btn"
+            android:id="@+id/start_button"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginStart="32dp"
@@ -83,7 +83,6 @@
             android:layout_marginBottom="40dp"
             android:background="@drawable/start_button"
             android:text="Start"
-            android:onClick="@{() -> viewModel.onClickStartGame()}"
             android:textColor="@color/primary_background"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"

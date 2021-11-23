@@ -12,8 +12,8 @@
         tools:layout="@layout/fragment_home"
         >
         <argument
-            android:name="level"
-            app:argType="string" />
+            android:name="difficulity"
+            app:argType="com.example.typing_tracker.util.Difficulty" />
         <action
             android:id="@+id/action_homeFragment_to_statisticsFragment"
             app:destination="@id/statisticsFragment" />
