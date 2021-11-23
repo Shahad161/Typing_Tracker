@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="190dp"
-            android:layout_height="75dp"
+            android:layout_width="213dp"
+            android:layout_height="83dp"
             android:layout_marginTop="8dp"
             android:src="@drawable/ic_splash"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,10 +55,21 @@
             android:layout_marginHorizontal="32dp"
             android:layout_marginBottom="32dp"
             android:gravity="center_vertical"
-            android:spinnerMode="dialog"
+            android:spinnerMode="dropdown"
             android:textSize="16sp"
-            app:entries="@{viewModel.difficulty}"
+            app:entries="@{true}"
             app:layout_constraintBottom_toTopOf="@+id/appCompatButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="#898A8D"
+            app:layout_constraintBottom_toBottomOf="@+id/item_spinner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -68,7 +79,7 @@
             android:layout_height="48dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="40dp"
             android:background="@drawable/start_button"
             android:text="Start"
             android:textColor="@color/primary_background"
