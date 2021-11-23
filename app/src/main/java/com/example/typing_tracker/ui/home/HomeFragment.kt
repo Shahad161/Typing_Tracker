@@ -11,14 +11,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(){
 
     override val layoutId: Int = R.layout.fragment_home
     override val viewModelClass = HomeViewModel::class.java
-    val args: HomeFragmentArgs by navArgs()
 
     override fun observeEvents() {
 
     }
 
     override fun setUpBinding() {
-        Log.i("kkk", args.level)
         binding.countUpTimer.start()
     }
 

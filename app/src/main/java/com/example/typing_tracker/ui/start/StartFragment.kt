@@ -14,11 +14,7 @@ class StartFragment  : BaseFragment<FragmentStartBinding, StartViewModel>(){
 
 
     override fun observeEvents() {
-        viewModel.gameConfigurationEvent.observe(this , EventObserver {
-            binding.startBtn.goToFragment(
-                StartFragmentDirections.actionStartFragmentToHomeFragment(it!!)
-            )
-        })
+
     }
 
     override fun setUpBinding() {
