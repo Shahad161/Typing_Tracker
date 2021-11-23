@@ -6,7 +6,7 @@ import com.example.typing_tracker.util.Difficulty
 
 @Entity(tableName = "PARAGRAPH_TABLE")
 data class Paragraph(
-    @PrimaryKey(autoGenerate = true) val id: Long,
+    @PrimaryKey(autoGenerate = true) val id: Int,
     val paragraph: String,
     val difficulty: Difficulty,
 )

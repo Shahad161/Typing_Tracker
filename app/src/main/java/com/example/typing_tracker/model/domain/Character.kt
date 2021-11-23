@@ -6,7 +6,7 @@ import java.util.*
 
 @Entity(tableName = "CHARACTER_TABLE")
 data class Character(
-    @PrimaryKey(autoGenerate = true) val characterId: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int,
     val character: String,
     val speed: Double,
     val entryDate: Date,

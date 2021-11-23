@@ -10,15 +10,15 @@ import io.reactivex.rxjava3.core.*
 @Dao
 interface TypingDao {
 
-    @Query("SELECT * FROM GAME_RESULT_TABLE")
+    @Query("SELECT * FROM GAME_RESULT_TABLE ORDER BY date DESC")
     fun getAllGamesResults() : Single<List<GameResult>>
 
-    @Query("SELECT * FROM CHARACTER_TABLE WHERE characterId = :characterId LIMIT 1")
-    fun getCharacterStatistics(characterId: Int) : Character
+    @Query("SELECT * FROM CHARACTER_TABLE WHERE id = :characterId")
+    fun getCharacterStatistics(characterId: Int) : Single<Character>
 
 
     @Query("SELECT paragraph FROM PARAGRAPH_TABLE WHERE difficulty = :difficulty ORDER BY random() LIMIT 1")
-    fun getParagraphByDifficulty(difficulty: Difficulty): String
+    fun getParagraphByDifficulty(difficulty: Difficulty): Single<String>
 
     @Insert
     fun insertCharacter(character: Character) : Completable
