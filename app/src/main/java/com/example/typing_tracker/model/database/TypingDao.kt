@@ -26,8 +26,5 @@ interface TypingDao {
     @Insert
     fun insertGameResult(gameResult: GameResult) : Completable
 
-// this will be used to add the sample paragraphs to the database
-    @Insert
-    fun insertParagraph(paragraph: Paragraph) : Completable
 
 }

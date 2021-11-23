@@ -18,6 +18,6 @@ object Repository {
     fun insertCharacter(character: Character) = typingDao.insertCharacter(character)
 
     fun insertGameResult(gameResult: GameResult) =
-        typingDao.insertGameResult(gameResult = gameResult)
+        typingDao.insertGameResult(gameResult)
 }
 
