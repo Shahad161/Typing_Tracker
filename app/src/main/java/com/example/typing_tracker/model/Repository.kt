@@ -9,8 +9,8 @@ object Repository {
 
 
     fun getAllGamesResults() = typingDao.getAllGamesResults()
-    fun getCharacterStatistics(characterId: Int) = typingDao.getCharacterStatistics(characterId)
 
+    fun getCharacterStatistics(characterId: Int) = typingDao.getCharacterStatistics(characterId)
 
     fun getParagraphByDifficulty(difficulty: Difficulty) =
         typingDao.getParagraphByDifficulty(difficulty)
