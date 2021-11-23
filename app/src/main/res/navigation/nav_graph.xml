@@ -9,19 +9,15 @@
         android:id="@+id/homeFragment"
         android:name="com.example.typing_tracker.ui.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_historyFragment"
-            app:destination="@id/historyFragment" />
+        tools:layout="@layout/fragment_home"
+        >
         <argument
             android:name="level"
             app:argType="string" />
+        <action
+            android:id="@+id/action_homeFragment_to_statisticsFragment"
+            app:destination="@id/statisticsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/historyFragment"
-        android:name="com.example.typing_tracker.ui.statistics.StatisticsFragment"
-        android:label="HistoryFragment"
-        tools:layout="@layout/fragment_statistics"/>
     <fragment
         android:id="@+id/startFragment"
         android:name="com.example.typing_tracker.ui.start.StartFragment"
@@ -31,4 +27,10 @@
             android:id="@+id/action_startFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="com.example.typing_tracker.ui.statistics.StatisticsFragment"
+        android:label="StatisticsFragment"
+        tools:layout="@layout/fragment_home"
+        />
 </navigation>
