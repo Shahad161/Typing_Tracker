@@ -1,33 +1,23 @@
 package com.example.typing_tracker.model
 
-import com.example.typing_tracker.model.database.TypingTrackerDatabase
-import com.example.typing_tracker.model.domain.Character
-import com.example.typing_tracker.model.domain.Paragraph
-import com.example.typing_tracker.model.domain.Result
-import io.reactivex.rxjava3.core.Completable
+import com.example.typing_tracker.model.database.TypingDatabase
+import com.example.typing_tracker.model.domain.*
+import com.example.typing_tracker.util.Difficulty
 
 object Repository {
-    private val resultDao = TypingTrackerDatabase.getInstanceWithoutContext().resultDao()
-    private val characterDao = TypingTrackerDatabase.getInstanceWithoutContext().characterDao()
-    private val paragraphDao = TypingTrackerDatabase.getInstanceWithoutContext().paragraphDao()
+    private val typingDao = TypingDatabase.getInstanceWithoutContext().typingDao()
 
-    fun insertResult(result: Result): Completable {
-        return resultDao.insert(result)
-    }
 
-    fun deleteResult(result: Result): Completable {
-        return resultDao.delete(result)
-    }
+    fun getAllGamesResults() = typingDao.getAllGamesResults()
+    fun getCharacterStatistics(characterId: Int) = typingDao.getCharacterStatistics(characterId)
 
-    fun insertParagraph(paragraph: Paragraph): Completable {
-        return paragraphDao.insert(paragraph)
-    }
 
-    fun deleteAllParagraphs()  {
-         paragraphDao.deleteAllParagraphs()
-    }
+    fun getParagraphByDifficulty(difficulty: Difficulty) =
+        typingDao.getParagraphByDifficulty(difficulty)
 
-    fun insertCharacter(character:Character) : Completable {
-        return characterDao.insert(character)
-    }
+    fun insertCharacter(character: Character) = typingDao.insertCharacter(character)
+
+    fun insertGameResult(gameResult: GameResult) =
+        typingDao.insertGameResult(gameResult = gameResult)
 }
+

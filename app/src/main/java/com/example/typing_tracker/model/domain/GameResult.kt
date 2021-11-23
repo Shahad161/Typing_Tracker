@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 import com.example.typing_tracker.util.Difficulty
 import java.util.*
 
-@Entity(tableName = "RESULT_TABLE")
-data class Result(
+@Entity(tableName = "GAME_RESULT_TABLE")
+data class GameResult(
     @PrimaryKey(autoGenerate = true) val id: Long,
     val keyStrokes: Int,
     val correctCharacters: Int,
