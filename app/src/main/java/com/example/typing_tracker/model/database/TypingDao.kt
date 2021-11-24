@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.typing_tracker.model.domain.*
+import com.example.typing_tracker.util.Difficulty
 import io.reactivex.rxjava3.core.*
 
 @Dao
@@ -17,7 +18,7 @@ interface TypingDao {
 
 
     @Query("SELECT paragraph FROM PARAGRAPH_TABLE WHERE difficulty = :difficulty ORDER BY random() LIMIT 1")
-    fun getParagraphByDifficulty(difficulty: String): Single<String>
+    fun getParagraphByDifficulty(difficulty: Difficulty): Single<String>
 
     @Insert
     fun insertCharacter(character: Character) : Completable
