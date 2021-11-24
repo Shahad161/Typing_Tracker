@@ -58,7 +58,7 @@
             android:gravity="center_vertical"
             android:spinnerMode="dropdown"
             android:textSize="16sp"
-            app:entries="@{viewModel.levels}"
+            android:entries="@array/levels"
             app:selectedValue="@={viewModel.level}"
             app:layout_constraintBottom_toTopOf="@+id/start_btn"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,11 +69,12 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:background="#898A8D"
-            app:layout_constraintBottom_toBottomOf="@+id/item_spinner"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_spinner" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/start_btn"
