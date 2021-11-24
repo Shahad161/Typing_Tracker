@@ -1,5 +1,6 @@
 package com.example.typing_tracker.util
 
+import android.text.Html
 import android.view.View
 import android.widget.*
 import androidx.databinding.*
@@ -26,5 +27,12 @@ fun setSelectedListener(view: Spinner, changeListener: InverseBindingListener) {
             changeListener.onChange()
         }
         override fun onNothingSelected(p0: AdapterView<*>?) {}
+    }
+}
+
+@BindingAdapter(value = ["app:setParagraph"])
+fun setParagraph(view :TextView , paragraph:String?){
+    paragraph?.let {
+        view.text =Html.fromHtml(it,Html.FROM_HTML_MODE_LEGACY)
     }
 }

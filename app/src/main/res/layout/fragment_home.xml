@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.example.typing_tracker.ui.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,16 +59,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/top_bar_background" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <TextView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="96dp"
             android:layout_margin="@dimen/margin_veryLarge"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:padding="8dp"
+            app:setParagraph="@{viewModel.paragraph}"
             app:layout_constraintTop_toBottomOf="@+id/count_up_timer"
-            app:spanCount="8"
-            tools:listitem="@layout/item_paragraph"/>
+            />
 
         <EditText
             android:layout_width="match_parent"

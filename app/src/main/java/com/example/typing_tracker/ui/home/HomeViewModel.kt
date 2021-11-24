@@ -16,12 +16,13 @@ class HomeViewModel: BaseViewModel(){
     fun getParagraph(diffuctilly: Difficulty){
 
         Repository.getParagraphByDifficulty(diffuctilly)
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onSuccess,::onFail)
     }
 
     private fun onSuccess(paragraph:String){
+        Log.i(Constants.LOG_TAG,paragraph)
         _paragraph.postValue(paragraph)
     }
 
