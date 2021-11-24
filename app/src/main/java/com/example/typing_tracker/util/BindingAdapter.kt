@@ -1,11 +1,10 @@
 package com.example.typing_tracker.util
 
 import android.text.Html
-import android.util.Log
-import android.view.KeyEvent
 import android.view.View
 import android.widget.*
 import androidx.databinding.*
+import com.example.typing_tracker.ui.home.CharListener
 
 
 @BindingAdapter(value = ["app:selectedValue"])
@@ -40,23 +39,34 @@ fun setParagraph(view :TextView , paragraph:String?){
 }
 
 
-@BindingAdapter(value = ["app:updateParagraph","app:originalText"])
-fun updateParagraph(view :TextView, enterText :String?, originalText:String?){
+@BindingAdapter(value = ["app:updateParagraph","app:originalText","app:onCharEntered"])
+fun whenCharEntered(view :TextView, enterText :String?, originalText:String?, listener:CharListener){
     enterText?.takeIf { it.isNotEmpty() }?.let {
-            view.text= Html.fromHtml(
-                originalText?.replaceRange(
-                    enterText.lastIndex,
-                    enterText.length,
-                    getFormatedText(originalText,it)
-                ),
-                Html.FROM_HTML_MODE_LEGACY
-            )
-        }
+        view.text = getNewText(originalText, it)
+        originalText?.get(it.lastIndex)?.let { it1 -> enterChar(it1,enterText,listener) }
+    }
 }
 
-fun getFormatedText(old:String, new:String):String{
-    return if(old[new.lastIndex] == new.last()){
-        "<font color='green'>${old[new.lastIndex]}</font>"
-    }else
-        "<font color='red'>${old[new.lastIndex]}</font>"
+fun getNewText(originalText:String?, enterText: String ) =
+    Html.fromHtml(
+        originalText?.replaceRange(
+            enterText.lastIndex,
+            enterText.length,
+            getFormattedText(originalText,enterText)
+        ), Html.FROM_HTML_MODE_LEGACY)
+
+fun getFormattedText(old:String, new:String): String{
+    with(old[new.lastIndex]) {
+        return if (this.checkIfCorrectLastChar(new)) {
+            this.getHtmlFormatText("green")
+        } else {
+            this.getHtmlFormatText("red")
+        }
+    }
 }
+
+fun enterChar(lastChar: Char, new:String , charListener : CharListener ){
+    charListener.onEnterChar("$lastChar",lastChar.checkIfCorrectLastChar(new))
+}
+
+fun Char.checkIfCorrectLastChar(newText: String) = this == newText.last()

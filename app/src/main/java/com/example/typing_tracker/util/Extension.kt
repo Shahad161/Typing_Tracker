@@ -35,3 +35,5 @@ fun String.toDifficulty() :Difficulty{
         else -> Difficulty.NORMAL
     }
 }
+
+fun Char.getHtmlFormatText(color: String) =  "<font color='$color'>$this</font>"

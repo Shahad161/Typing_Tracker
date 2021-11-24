@@ -5,7 +5,7 @@ import androidx.lifecycle.*
 import com.example.typing_tracker.ui.base.BaseViewModel
 import com.example.typing_tracker.util.*
 
-class HomeViewModel: BaseViewModel(){
+class HomeViewModel: BaseViewModel(),CharListener{
 
     private val _paragraph = MutableLiveData<String>()
     val paragraph: LiveData<String> = _paragraph
@@ -31,4 +31,7 @@ class HomeViewModel: BaseViewModel(){
         Log.i(Constants.LOG_TAG,throwable.message.toString())
     }
 
+    override fun onEnterChar(char: String, isCorrect: Boolean) {
+        Log.i("HHHH","the $char is enter and is it $isCorrect")
+    }
 }
