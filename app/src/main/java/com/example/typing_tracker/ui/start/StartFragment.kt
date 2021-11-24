@@ -5,6 +5,7 @@ import com.example.typing_tracker.databinding.FragmentStartBinding
 import com.example.typing_tracker.ui.base.BaseFragment
 import com.example.typing_tracker.util.EventObserver
 import com.example.typing_tracker.util.goToFragment
+import com.example.typing_tracker.util.observeEvent
 
 
 class StartFragment  : BaseFragment<FragmentStartBinding, StartViewModel>(){
@@ -14,7 +15,8 @@ class StartFragment  : BaseFragment<FragmentStartBinding, StartViewModel>(){
 
 
     override fun observeEvents() {
-
+        viewModel.clickStart.observeEvent(this) { level ->
+        }
     }
 
     override fun setUpBinding() {
