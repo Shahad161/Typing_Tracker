@@ -1,12 +1,10 @@
 package com.example.typing_tracker.ui.home
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
 import com.example.typing_tracker.model.Repository
 import com.example.typing_tracker.ui.base.BaseViewModel
-import com.example.typing_tracker.util.Constants
-import com.example.typing_tracker.util.Difficulty
+import com.example.typing_tracker.util.*
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
@@ -21,8 +19,6 @@ class HomeViewModel: BaseViewModel(){
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe(::onSuccess,::onFail)
-
-
     }
 
     private fun onSuccess(paragraph:String){

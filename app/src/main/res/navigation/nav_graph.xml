@@ -13,7 +13,7 @@
         >
         <argument
             android:name="level"
-            app:argType="string" />
+            app:argType="com.example.typing_tracker.util.Difficulty" />
         <action
             android:id="@+id/action_homeFragment_to_statisticsFragment"
             app:destination="@id/statisticsFragment" />

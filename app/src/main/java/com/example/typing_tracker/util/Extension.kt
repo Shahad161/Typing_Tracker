@@ -27,3 +27,11 @@ fun <T> LiveData<Event<T>>.observeEvent(owner: LifecycleOwner, function:(T) ->Un
         function(it)
     })
 }
+
+fun String.toDifficulty() :Difficulty{
+    return when(this){
+        "Hard" -> Difficulty.HARD
+        "Easy" -> Difficulty.EASY
+        else -> Difficulty.NORMAL
+    }
+}
