@@ -5,7 +5,7 @@ import android.view.*
 import androidx.databinding.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewbinding.ViewBinding
+import com.example.typing_tracker.BR
 
 abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
 
@@ -26,6 +26,7 @@ abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment
         initViewModel()
         _binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         _binding.apply {
+            setVariable(BR.viewModel,this@BaseFragment.viewModel)
             lifecycleOwner = this@BaseFragment
             return root
         }
