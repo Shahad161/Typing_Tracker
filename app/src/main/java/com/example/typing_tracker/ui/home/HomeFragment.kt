@@ -5,6 +5,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.typing_tracker.R
 import com.example.typing_tracker.databinding.FragmentHomeBinding
 import com.example.typing_tracker.ui.base.BaseFragment
+import com.example.typing_tracker.util.Difficulty
 
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(){
@@ -19,6 +20,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(){
     }
 
     override fun setUpBinding() {
+        viewModel.getParagraph(Difficulty.HARD)
         binding.countUpTimer.start()
     }
 
