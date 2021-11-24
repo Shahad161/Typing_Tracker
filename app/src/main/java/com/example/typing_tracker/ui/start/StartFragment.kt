@@ -16,6 +16,7 @@ class StartFragment  : BaseFragment<FragmentStartBinding, StartViewModel>(){
 
     override fun observeEvents() {
         viewModel.clickStart.observeEvent(this) { level ->
+            view?.goToFragment(StartFragmentDirections.actionStartFragmentToHomeFragment(level!!))
         }
     }
 

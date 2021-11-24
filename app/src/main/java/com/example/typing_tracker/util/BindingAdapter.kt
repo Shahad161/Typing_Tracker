@@ -28,10 +28,12 @@ fun selectedItem(view: Spinner, item: String?) {
     }
 }
 
+
 @InverseBindingAdapter(attribute = "selectedValue", event = "SpinnerOnItemSelected")
-fun captureSelectedValue(view: Spinner): String? {
+fun captureSelectedValue(view: Spinner): String {
     return view.selectedItem.toString()
 }
+
 
 @BindingAdapter("SpinnerOnItemSelected")
 fun setSelectedListener(view: Spinner, changeListener: InverseBindingListener) {
