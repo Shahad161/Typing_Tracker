@@ -6,13 +6,6 @@ import kotlinx.coroutines.*
 
 abstract class BaseViewModel: ViewModel() {
 
-    fun <T> collectResponse(flow: Flow<T?>, function: (T?) -> Unit) {
-        viewModelScope.launch {
-            flow.flowOn(Dispatchers.IO)
-                .collect { state ->
-                    function(state)
-                }
-        }
-    }
+
 
 }
