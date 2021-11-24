@@ -1,6 +1,8 @@
 package com.example.typing_tracker.ui.home
 
 import android.util.Log
+import android.view.KeyEvent
+import android.view.View
 import androidx.navigation.fragment.navArgs
 import com.example.typing_tracker.R
 import com.example.typing_tracker.databinding.FragmentHomeBinding

@@ -1,6 +1,8 @@
 package com.example.typing_tracker.util
 
 import android.text.Html
+import android.util.Log
+import android.view.KeyEvent
 import android.view.View
 import android.widget.*
 import androidx.databinding.*
@@ -35,4 +37,26 @@ fun setParagraph(view :TextView , paragraph:String?){
     paragraph?.let {
         view.text =Html.fromHtml(it,Html.FROM_HTML_MODE_LEGACY)
     }
+}
+
+
+@BindingAdapter(value = ["app:updateParagraph","app:originalText"])
+fun updateParagraph(view :TextView, enterText :String?, originalText:String?){
+    enterText?.takeIf { it.isNotEmpty() }?.let {
+            view.text= Html.fromHtml(
+                originalText?.replaceRange(
+                    enterText.lastIndex,
+                    enterText.length,
+                    getFormatedText(originalText,it)
+                ),
+                Html.FROM_HTML_MODE_LEGACY
+            )
+        }
+}
+
+fun getFormatedText(old:String, new:String):String{
+    return if(old[new.lastIndex] == new.last()){
+        "<font color='green'>${old[new.lastIndex]}</font>"
+    }else
+        "<font color='red'>${old[new.lastIndex]}</font>"
 }
