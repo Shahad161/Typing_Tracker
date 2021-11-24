@@ -1,9 +1,9 @@
 package com.example.typing_tracker.ui.home
 
+import android.util.Log
 import androidx.navigation.fragment.navArgs
 import com.example.typing_tracker.R
 import com.example.typing_tracker.databinding.FragmentHomeBinding
-
 import com.example.typing_tracker.ui.base.BaseFragment
 
 
@@ -19,9 +19,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(){
     }
 
     override fun setUpBinding() {
+        binding.listener=viewModel
+        viewModel.getParagraph(args.level)
         binding.countUpTimer.start()
     }
-
 
 
 }
