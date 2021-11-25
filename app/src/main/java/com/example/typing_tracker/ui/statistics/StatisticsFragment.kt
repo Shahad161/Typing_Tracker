@@ -6,7 +6,10 @@ import com.example.typing_tracker.databinding.FragmentStatisticsBinding
 import com.example.typing_tracker.ui.base.BaseFragment
 import com.github.aachartmodel.aainfographics.aachartcreator.AAChartModel
 import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
+import com.github.aachartmodel.aainfographics.aachartcreator.AAOptions
 import com.github.aachartmodel.aainfographics.aachartcreator.AASeriesElement
+import com.github.aachartmodel.aainfographics.aaoptionsmodel.*
+import com.github.aachartmodel.aainfographics.aatools.AAJSStringPurer
 
 class StatisticsFragment : BaseFragment<FragmentStatisticsBinding, StatisticsViewModel>(){
 
@@ -32,42 +35,53 @@ class StatisticsFragment : BaseFragment<FragmentStatisticsBinding, StatisticsVie
             ))
         binding.lineChart.aa_drawChartWithChartModel(lineChartModel)
 
-        val barChartModel : AAChartModel = AAChartModel()
-            .chartType(AAChartType.Bar)
-            .title("characters accuracy")
-            .backgroundColor("#ffffff")
-            .dataLabelsEnabled(true)
-            .series(arrayOf(
-                AASeriesElement()
-                    .name("a")
-                    .data(arrayOf(7.0)),
-                AASeriesElement()
-                    .name("b")
-                    .data(arrayOf(6)),
-                AASeriesElement()
-                    .name("c")
-                    .data(arrayOf(3)),
-                AASeriesElement()
-                    .name("d")
-                    .data(arrayOf(10)),
-                AASeriesElement()
-                    .name("e")
-                    .data(arrayOf(20)),
-                AASeriesElement()
-                    .name("f")
-                    .data(arrayOf(15)),
-                AASeriesElement()
-                    .name("g")
-                    .data(arrayOf(40)),
-                AASeriesElement()
-                    .name("h")
-                    .data(arrayOf(37)),
-                AASeriesElement()
-                    .name("i")
-                    .data(arrayOf(22))
-            )
-            )
-        binding.barChart.aa_drawChartWithChartModel(barChartModel)
+
+
+
+        val pureJSStr: String = AAJSStringPurer.pureJavaScriptFunctionString(
+            "Source: <a href=\"https://highcharts.uservoice.com/forums/55896-highcharts-javascript-api\">UserTests</a>"
+        )
+        val element: AASeriesElement = AASeriesElement()
+            .name("Characters")
+            .data(arrayOf(
+                arrayOf("A", 1000),
+                arrayOf("B", 575),
+                arrayOf("C", 523),
+                arrayOf("D", 427),
+                arrayOf("E", 399),
+                arrayOf("F", 309),
+                arrayOf("G", 278),
+                arrayOf("H", 239),
+                arrayOf("I", 235),
+                arrayOf("J", 203),
+                arrayOf("K", 182),
+                arrayOf("L", 157),
+                arrayOf("M", 149),
+                arrayOf("N", 144),
+                arrayOf("O", 143),
+                arrayOf("P", 137),
+                arrayOf("Q", 134),
+                arrayOf("R", 118),
+                arrayOf("S", 118),
+                arrayOf("T", 117)
+            ))
+
+        val aaOptions: AAOptions = AAOptions()
+            .chart(AAChart()
+                .type(AAChartType.Bar)
+                .scrollablePlotArea(
+                    AAScrollablePlotArea()
+                        .minHeight(900)
+                ))
+            .title(AATitle()
+                .text("Speed per Character"))
+            .subtitle(AASubtitle()
+                .text(pureJSStr))
+            .xAxis(AAXAxis()
+                .type("category"))
+            .series(arrayOf(element))
+
+        binding.barChart.aa_drawChartWithChartOptions(aaOptions)
 
     }
 
