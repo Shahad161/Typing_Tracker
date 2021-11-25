@@ -31,6 +31,6 @@
         android:id="@+id/statisticsFragment"
         android:name="com.example.typing_tracker.ui.statistics.StatisticsFragment"
         android:label="StatisticsFragment"
-        tools:layout="@layout/fragment_home"
+        tools:layout="@layout/fragment_statistics"
         />
 </navigation>
