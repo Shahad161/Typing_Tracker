@@ -20,9 +20,8 @@ class StatisticsFragment : BaseFragment<FragmentStatisticsBinding, StatisticsVie
     override fun setUpBinding() {
         val lineChartModel : AAChartModel = AAChartModel()
             .chartType(AAChartType.Line)
-            .title("overall statistics")
-            .backgroundColor("#ffffff")
             .dataLabelsEnabled(true)
+            .categories(arrayOf("2/2","2/3","2/4","2/5", "2/6","2/7","2/8","2/9","2/10","2/11","2/12","2/13"))
             .series(arrayOf(
                 AASeriesElement()
                     .name("accuracy")
@@ -30,8 +29,7 @@ class StatisticsFragment : BaseFragment<FragmentStatisticsBinding, StatisticsVie
                 AASeriesElement()
                     .name("WPM")
                     .data(arrayOf(0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5))
-            )
-            )
+            ))
         binding.lineChart.aa_drawChartWithChartModel(lineChartModel)
 
         val barChartModel : AAChartModel = AAChartModel()
@@ -51,7 +49,22 @@ class StatisticsFragment : BaseFragment<FragmentStatisticsBinding, StatisticsVie
                     .data(arrayOf(3)),
                 AASeriesElement()
                     .name("d")
-                    .data(arrayOf(4))
+                    .data(arrayOf(10)),
+                AASeriesElement()
+                    .name("e")
+                    .data(arrayOf(20)),
+                AASeriesElement()
+                    .name("f")
+                    .data(arrayOf(15)),
+                AASeriesElement()
+                    .name("g")
+                    .data(arrayOf(40)),
+                AASeriesElement()
+                    .name("h")
+                    .data(arrayOf(37)),
+                AASeriesElement()
+                    .name("i")
+                    .data(arrayOf(22))
             )
             )
         binding.barChart.aa_drawChartWithChartModel(barChartModel)
