@@ -7,7 +7,7 @@ import com.example.typing_tracker.ui.base.BaseFragment
 
 class StatisticsFragment : BaseFragment<FragmentStatisticsBinding, StatisticsViewModel>(){
 
-    override val layoutId: Int = R.layout.fragment_home
+    override val layoutId: Int = R.layout.fragment_statistics
     override val viewModelClass = StatisticsViewModel::class.java
 
     override fun observeEvents() {

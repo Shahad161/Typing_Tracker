@@ -38,3 +38,10 @@ fun setParagraph(view :TextView , paragraph:String?){
         view.text =Html.fromHtml(it,Html.FROM_HTML_MODE_LEGACY)
     }
 }
+
+@BindingAdapter(value = ["app:startCounter"])
+fun startCounter(view: Chronometer , isBegin: Boolean){
+    if(isBegin) {
+        view.start()
+    }
+}

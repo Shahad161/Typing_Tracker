@@ -3,14 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
-            name="item"
-            type="com.example.typing_tracker.ui.statistics.StatisticsRecyclerAdapter" />
-
-        <variable
-            name="listener"
-            type="com.example.typing_tracker.ui.statistics.StatisticsRecyclerAdapter" />
+            name="viewModel"
+            type="com.example.typing_tracker.ui.statistics.StatisticsViewModel" />
     </data>
 
     <FrameLayout

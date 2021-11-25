@@ -13,6 +13,6 @@ data class GameResult(
     val wrongCharacters: Int,
     val wpm: Double,
     val accuracy: Double,
-    val difficulty: Difficulty,
+    var difficulty: Difficulty,
     val date: Date,
 )
