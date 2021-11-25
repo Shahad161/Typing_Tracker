@@ -37,3 +37,5 @@ fun String.toDifficulty() :Difficulty{
 }
 
 fun Char.getHtmlFormatText(color: String) =  "<font color='$color'>$this</font>"
+fun Char.checkIfCorrectLastChar(newText: String) = this == newText.last()
+

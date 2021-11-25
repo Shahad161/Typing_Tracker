@@ -15,11 +15,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(){
 
 
     override fun observeEvents() {
-
     }
 
     override fun setUpBinding() {
-        binding.listener=viewModel
         viewModel.getParagraph(args.level)
         binding.countUpTimer.start()
     }
