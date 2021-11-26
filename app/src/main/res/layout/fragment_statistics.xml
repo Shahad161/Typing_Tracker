@@ -5,13 +5,6 @@
 
     <data>
 
-        <variable
-            name="item"
-            type="com.example.typing_tracker.ui.statistics.StatisticsRecyclerAdapter" />
-
-        <variable
-            name="listener"
-            type="com.example.typing_tracker.ui.statistics.StatisticsRecyclerAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
