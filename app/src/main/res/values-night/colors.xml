@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary_background">#151517</color>
+    <color name="primary_background">#0D1624</color>
     <color name="log_color">#ffffff</color>
-    <color name="text_color">#272322</color>
+    <color name="primary_text_color">#DFE7EB</color>
+    <color name="secondary_text_color">#000000</color>
+    <color name="brand_color">#008CFF</color>
+    <color name="primary_button_background">#043D6B</color>
+
+
 
 </resources>
