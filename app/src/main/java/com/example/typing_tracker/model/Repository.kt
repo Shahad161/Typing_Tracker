@@ -1,7 +1,7 @@
 package com.example.typing_tracker.model
 
 import com.example.typing_tracker.model.database.TypingDatabase
-import com.example.typing_tracker.model.domain.*
+import com.example.typing_tracker.model.entities.*
 import com.example.typing_tracker.util.Difficulty
 
 object Repository {

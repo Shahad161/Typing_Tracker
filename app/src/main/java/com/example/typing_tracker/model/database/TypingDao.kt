@@ -3,7 +3,7 @@ package com.example.typing_tracker.model.database
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.typing_tracker.model.domain.*
+import com.example.typing_tracker.model.entities.*
 import com.example.typing_tracker.util.Difficulty
 import io.reactivex.rxjava3.core.*
 

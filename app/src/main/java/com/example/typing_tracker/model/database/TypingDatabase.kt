@@ -2,7 +2,7 @@ package com.example.typing_tracker.model.database
 
 import android.content.Context
 import androidx.room.*
-import com.example.typing_tracker.model.domain.*
+import com.example.typing_tracker.model.entities.*
 
 
 @Database(

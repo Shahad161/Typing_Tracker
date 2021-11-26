@@ -3,7 +3,7 @@ package com.example.typing_tracker.ui.home
 import android.util.Log
 import androidx.lifecycle.*
 import com.example.typing_tracker.model.Repository
-import com.example.typing_tracker.model.domain.*
+import com.example.typing_tracker.model.entities.*
 import com.example.typing_tracker.ui.base.BaseViewModel
 import com.example.typing_tracker.util.*
 import io.reactivex.rxjava3.core.Observable
@@ -90,6 +90,7 @@ class HomeViewModel: BaseViewModel(){
         Character(
             id= 0, // delete this line
             character = "$char",
+            isCorrect = isCorrect,
             speed = speed,
             entryDate = Date()
         )
