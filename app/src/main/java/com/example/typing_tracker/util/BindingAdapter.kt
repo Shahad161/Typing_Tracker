@@ -1,11 +1,9 @@
 package com.example.typing_tracker.util
 
 import android.text.Html
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.databinding.*
-import com.example.typing_tracker.ui.home.CharListener
 
 
 @BindingAdapter(value = ["app:selectedValue"])

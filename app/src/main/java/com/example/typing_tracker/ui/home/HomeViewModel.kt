@@ -7,25 +7,27 @@ import com.example.typing_tracker.model.domain.*
 import com.example.typing_tracker.ui.base.BaseViewModel
 import com.example.typing_tracker.util.*
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 class HomeViewModel: BaseViewModel(){
 
+    private val currentTime = Observable.interval(1,TimeUnit.SECONDS)
+    private var isBegin = true
+    private var totalTime: Long? = null
+    private var lastDate: Long? = null
+    private var correctChar = 0
+    private var incorrectChar = 0
+    private var level : Difficulty? = null
+
     val enterText=MutableLiveData<String?>()
     val originalText = MutableLiveData<String>()
-
     val endGameEvent= MutableLiveData<Event<GameResult>>()
-    private var isBegin =true
 
-    private var lastDate :Long =1
-    private val totalTime = MutableLiveData<Long>()
-    private var correctChar =0
-    private var incorrectChar =0
-    private var level =Difficulty.NORMAL
-
-    val startCounter =MutableLiveData(false)
-
+    private val _startCounter =MutableLiveData(false)
+    val startCounter : LiveData<Boolean> = _startCounter
 
     val checkInput :LiveData<String?> = MediatorLiveData<String?>().apply {
         addSource(originalText){
@@ -43,8 +45,11 @@ class HomeViewModel: BaseViewModel(){
 
     private fun setUpGame() {
         if(isBegin){
-            startCounter.postValue(true)
+            _startCounter.postValue(true)
             lastDate= Date().time
+            currentTime.subscribe{
+                totalTime =it
+            }
             isBegin=false
         }
     }
@@ -87,7 +92,7 @@ class HomeViewModel: BaseViewModel(){
         lastDate =time
     }
 
-    private fun getTime(currentTime: Long) =if(isBegin) 0 else currentTime - lastDate
+    private fun getTime(currentTime: Long) =if(isBegin) 0 else currentTime - (lastDate ?: 0L)
 
     private fun endGame() {
         with(getGameResult()){
@@ -98,12 +103,12 @@ class HomeViewModel: BaseViewModel(){
 
     private fun getGameResult() =
         GameResult(0,
-            originalText.value?.length ?: 0,
-            correctCharacters = correctChar,
-            wrongCharacters = incorrectChar,
-            wpm = 2.2,
-            accuracy = 2.2,
-            difficulty = level,
+            originalText.value?.length ?: 0 ,
+            correctCharacters = correctChar ,
+            wrongCharacters = incorrectChar ,
+            wpm = getWordPerMinute(originalText.value,totalTime) ,
+            accuracy = getAccuracy(correctChar,originalText.value) ,
+            difficulty = level ?: Difficulty.EASY ,
             date = Date()
         )
 
@@ -129,6 +134,7 @@ class HomeViewModel: BaseViewModel(){
 
     private fun onSuccess(paragraph:String){
         originalText.postValue( paragraph)
+        originalText.postValue(" paragraph paragraph")
     }
 
     private fun onFail(throwable: Throwable){
