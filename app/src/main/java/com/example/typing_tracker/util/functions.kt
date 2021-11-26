@@ -13,3 +13,14 @@ fun getFormattedText(Char:Char, new:String) =
     } else {
         Char.getHtmlFormatText("red")
     }
+
+fun getWordPerMinute(
+    text: String?,
+    totalTime: Long?
+) = (text?.length ?: 0 ) / (totalTime ?:1L).toDouble()
+
+
+fun getAccuracy(
+    correctChar: Int,
+    text: String?
+) = (correctChar.toDouble() / (text?.length ?:1))*100
