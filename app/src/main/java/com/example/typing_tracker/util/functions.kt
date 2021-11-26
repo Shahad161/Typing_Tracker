@@ -3,16 +3,22 @@ package com.example.typing_tracker.util
 fun getTextColored(originalText: String,enterText: String, lastChar: Char) =
     originalText.replaceRange(
         enterText.lastIndex,
-        enterText.length,
-        getFormattedText(lastChar,enterText)
+        enterText.length.addNextDistance(originalText,enterText),
+        getPreviousCharColored(lastChar,enterText) + getNextCharColored(originalText,enterText.lastIndex)
     )
 
-fun getFormattedText(Char:Char, new:String) =
+fun getNextCharColored(originalText: String, lastIndex: Int) =
+    originalText.takeIf { it.lastIndex != lastIndex }?.let{
+        it[lastIndex+1].getBackgroundColoredText(Constants.NEXT_CHAR_COLOR)
+    } ?: ""
+
+fun getPreviousCharColored(Char:Char, new:String) =
     if (Char.checkIfCorrectLastChar(new)) {
-        Char.getHtmlFormatText("green")
+        Char.getColoredText(Constants.CORRECT_CHAR_COLOR)
     } else {
-        Char.getHtmlFormatText("red")
+        Char.getColoredText(Constants.WRONG_CHAR_COLOR)
     }
+
 
 fun getWordPerMinute(
     text: String?,
