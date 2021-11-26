@@ -56,22 +56,49 @@ class HomeViewModel: BaseViewModel(){
 
     private fun onEnterDigit(newText:String , post :(String) -> Unit){
         originalText.value?.let { text ->
-            Date().time.also{ time ->
-                storeChar(newText.last(),getTime(time))
-                updateStaticCharacter(newText,text[newText.lastIndex])
-                updateLastTime(time)
+            Date().time.also{ currentTime ->
+                updateStatistics(newText, text , currentTime)
+                updateLastTime(currentTime)
                 post(updatedText(text,newText,text[newText.lastIndex]))
                 continueGame(text,newText)
             }
         }
     }
 
-    private fun storeChar(lastChar: Char,time:Long) {
-        Repository.insertCharacter(Character(0,"$lastChar",time.toDouble(), Date()))
+    private fun updateStatistics(newText:String, text: String, currentTime: Long){
+        with(getSpeed(currentTime).toDouble()) {
+            if(text[newText.lastIndex].checkIfCorrectLastChar(newText)){
+                storeCorrectChar(newText.last(),this)
+                correctChar ++
+            }else {
+                storeInCorrectChar(newText.last(),this)
+                incorrectChar ++
+            }
+        }
+    }
+
+    private fun storeCorrectChar(lastChar: Char,speed:Double) {
+        Repository.insertCharacter(getCharacter(lastChar,speed,true))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe()
     }
+
+    private fun storeInCorrectChar(lastChar: Char,speed: Double) {
+        Repository.insertCharacter(getCharacter(lastChar,speed,false))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
+    }
+
+    //must pass isCorrect value when change schema
+    private fun getCharacter(char: Char ,speed: Double ,isCorrect: Boolean) =
+        Character(
+            id= 0, // delete this line
+            character = "$char",
+            speed = speed,
+            entryDate = Date()
+        )
 
     private fun continueGame(text: String, newText: String) {
         takeIf { text.length==newText.length }?.let {
@@ -79,20 +106,11 @@ class HomeViewModel: BaseViewModel(){
         }
     }
 
-    private fun updateStaticCharacter(newText: String, lastChar: Char) {
-        if(lastChar.checkIfCorrectLastChar(newText)){
-            correctChar++
-        }else{
-            incorrectChar++
-        }
-    }
-
-
     private fun updateLastTime(time: Long) {
         lastDate =time
     }
 
-    private fun getTime(currentTime: Long) =if(isBegin) 0 else currentTime - (lastDate ?: 0L)
+    private fun getSpeed(currentTime: Long) =if(isBegin) 0 else currentTime - (lastDate ?: 0L)
 
     private fun endGame() {
         with(getGameResult()){
@@ -133,7 +151,7 @@ class HomeViewModel: BaseViewModel(){
     }
 
     private fun onSuccess(paragraph:String){
-        originalText.postValue( paragraph)
+//        originalText.postValue( paragraph)
         originalText.postValue(" paragraph paragraph")
     }
 
