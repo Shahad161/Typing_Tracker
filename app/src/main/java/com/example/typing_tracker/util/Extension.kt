@@ -6,6 +6,8 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 
 
 fun View.goToFragment(navDir: NavDirections) {
@@ -39,3 +41,7 @@ fun String.toDifficulty() :Difficulty{
 fun Char.getHtmlFormatText(color: String) =  "<font color='$color'>$this</font>"
 fun Char.checkIfCorrectLastChar(newText: String) = this == newText.last()
 
+
+fun Disposable.add(disposable: CompositeDisposable) {
+    disposable.add(this)
+}

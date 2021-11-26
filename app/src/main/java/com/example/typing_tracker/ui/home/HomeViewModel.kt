@@ -6,9 +6,7 @@ import com.example.typing_tracker.model.Repository
 import com.example.typing_tracker.model.domain.*
 import com.example.typing_tracker.ui.base.BaseViewModel
 import com.example.typing_tracker.util.*
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -77,18 +75,14 @@ class HomeViewModel: BaseViewModel(){
         }
     }
 
+    private fun getSpeed(currentTime: Long) =if(isBegin) 0 else currentTime - (lastDate ?: 0L)
+
     private fun storeCorrectChar(lastChar: Char,speed:Double) {
-        Repository.insertCharacter(getCharacter(lastChar,speed,true))
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe()
+        observe(Repository.insertCharacter(getCharacter(lastChar,speed,true)))
     }
 
     private fun storeInCorrectChar(lastChar: Char,speed: Double) {
-        Repository.insertCharacter(getCharacter(lastChar,speed,false))
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe()
+        observe(Repository.insertCharacter(getCharacter(lastChar,speed,false)))
     }
 
     //must pass isCorrect value when change schema
@@ -100,17 +94,19 @@ class HomeViewModel: BaseViewModel(){
             entryDate = Date()
         )
 
+    private fun updateLastTime(time: Long) {
+        lastDate =time
+    }
+
+    private fun updatedText(originalText :String,enteredText: String,lastChar: Char):String{
+        return getTextColored(originalText,enteredText,lastChar)
+    }
+
     private fun continueGame(text: String, newText: String) {
         takeIf { text.length==newText.length }?.let {
             endGame()
         }
     }
-
-    private fun updateLastTime(time: Long) {
-        lastDate =time
-    }
-
-    private fun getSpeed(currentTime: Long) =if(isBegin) 0 else currentTime - (lastDate ?: 0L)
 
     private fun endGame() {
         with(getGameResult()){
@@ -131,28 +127,17 @@ class HomeViewModel: BaseViewModel(){
         )
 
     private fun storeGame(gameResult: GameResult) {
-        Repository.insertGameResult(gameResult)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe()
+        observe(Repository.insertGameResult(gameResult))
     }
 
-
-    private fun updatedText(originalText :String,enteredText: String,lastChar: Char):String{
-        return getTextColored(originalText,enteredText,lastChar)
-    }
 
     fun getParagraph(level: Difficulty){
         this.level =level
-        Repository.getParagraphByDifficulty(level)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(::onSuccess,::onFail)
+        observe(Repository.getParagraphByDifficulty(level),::onSuccess,::onFail)
     }
 
     private fun onSuccess(paragraph:String){
-//        originalText.postValue( paragraph)
-        originalText.postValue(" paragraph paragraph")
+        originalText.postValue( paragraph)
     }
 
     private fun onFail(throwable: Throwable){
