@@ -81,10 +81,10 @@ class StatisticsFragment : BaseFragment<FragmentStatisticsBinding, StatisticsVie
 
         val aaOptions: AAOptions = AAOptions()
             .chart(AAChart()
-                .type(AAChartType.Bar)
+                .type(AAChartType.Column)
                 .scrollablePlotArea(
                     AAScrollablePlotArea()
-                        .minHeight(900)
+                        .minWidth(1000)
                 ))
             .title(AATitle()
                 .text("Speed per Character"))
