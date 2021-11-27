@@ -32,9 +32,10 @@ class StatisticsFragment : BaseFragment<FragmentStatisticsBinding, StatisticsVie
     }
 
     private fun initViewPager() {
-        val pagerAdapter = StatisticsPagerAdapter(this, fragmentsList)
-        binding.viewPager.adapter = pagerAdapter
-        binding.viewPager.isUserInputEnabled = false
+        binding.viewPager.apply {
+            adapter = StatisticsPagerAdapter(this@StatisticsFragment, fragmentsList)
+            isUserInputEnabled = false
+        }
     }
 
 
