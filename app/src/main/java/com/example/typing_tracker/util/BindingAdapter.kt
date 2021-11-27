@@ -70,7 +70,11 @@ fun setupChart(chart: AAChartView,
         .chart(
             AAChart()
                 .type(chartType)
+                .scrollablePlotArea(
+                    AAScrollablePlotArea()
+                        .minWidth(500)
                 )
+        )
         .title(
             AATitle()
                 .text(chartTitle))
