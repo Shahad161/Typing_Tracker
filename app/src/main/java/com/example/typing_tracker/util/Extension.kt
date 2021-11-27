@@ -32,13 +32,8 @@ fun <T> LiveData<Event<T>>.observeEvent(owner: LifecycleOwner, function:(T) ->Un
     })
 }
 
-fun String.toDifficulty() :Difficulty{
-    return when(this){
-        "Hard" -> Difficulty.HARD
-        "Easy" -> Difficulty.EASY
-        else -> Difficulty.NORMAL
-    }
-}
+fun String.toDifficulty() :Difficulty = enumValueOf(this.uppercase())
+
 
 fun Char.getColoredText(color: String) =  "<font color='$color'>$this</font>"
 

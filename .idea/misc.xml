@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/Typing_Tracker/app/src/main/res/drawable/button.xml" value="0.14427083333333332" />
+        <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/Typing_Tracker/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/Typing_Tracker/app/src/main/res/drawable/ic_baseline_insert_chart_outlined_24.xml" value="0.14427083333333332" />
+        <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/Typing_Tracker/app/src/main/res/drawable/ic_baseline_keyboard_arrow_left_24.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/Typing_Tracker/app/src/main/res/drawable/spinner_background.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/Typing_Tracker/app/src/main/res/layout/fragment_accuracy.xml" value="0.2552083333333333" />
+        <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/Typing_Tracker/app/src/main/res/layout/fragment_home.xml" value="0.16822916666666668" />
+        <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/Typing_Tracker/app/src/main/res/layout/fragment_speed.xml" value="0.16822916666666668" />
+        <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/Typing_Tracker/app/src/main/res/layout/fragment_start.xml" value="0.2" />
+        <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/Typing_Tracker/app/src/main/res/layout/fragment_statistics.xml" value="0.20185185185185187" />
         <entry key="..\:/projects/Typing_Tracker/app/src/main/res/layout/fragment_history.xml" value="0.21920289855072464" />
         <entry key="..\:/projects/Typing_Tracker/app/src/main/res/layout/fragment_home.xml" value="0.1793478260869565" />
       </map>

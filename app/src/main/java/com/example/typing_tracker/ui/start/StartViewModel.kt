@@ -6,14 +6,13 @@ import com.example.typing_tracker.util.*
 
 class StartViewModel: BaseViewModel() {
 
-    val level = MutableLiveData<Difficulty>()
+    val difficulity = MutableLiveData<Difficulty>()
 
     private val _clickStart = MutableLiveData<Event<Difficulty?>>()
     val clickStart: LiveData<Event<Difficulty?>> = _clickStart
 
-
     fun onClickStartGame(){
-        _clickStart.postValue(Event(level.value))
+        _clickStart.postValue(Event(difficulity.value))
     }
 
 }

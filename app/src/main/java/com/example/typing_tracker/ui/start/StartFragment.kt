@@ -21,6 +21,9 @@ class StartFragment  : BaseFragment<FragmentStartBinding, StartViewModel>(){
     }
 
     override fun setUpBinding() {
+        binding.statsticsImageView.setOnClickListener {
+            view?.goToFragment(StartFragmentDirections.actionStartFragmentToStatisticsFragment())
+        }
     }
 
 

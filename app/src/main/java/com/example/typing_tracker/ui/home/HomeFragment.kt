@@ -18,9 +18,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(){
     override fun observeEvents() {
         with(viewModel){
             //will rewritten when complete dialog
-            endGameEvent.observeEvent(this@HomeFragment){
-                binding.recyclerView.goToFragment(HomeFragmentDirections.actionHomeFragmentToStatisticsFragment())
-            }
+
 
         }
     }
