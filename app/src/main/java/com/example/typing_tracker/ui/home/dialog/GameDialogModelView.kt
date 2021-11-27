@@ -13,6 +13,9 @@ class GameDialogModelView: BaseViewModel() {
     private val _navigateToGame = MutableLiveData<Event<Boolean>>()
     val navigateToGame : LiveData<Event<Boolean>> = _navigateToGame
 
+    private val _lastGame = MutableLiveData<GameResult>()
+    val lastGame: LiveData<GameResult> = _lastGame
+
     private val _navigateToStatistics = MutableLiveData<Event<Boolean>>()
     val navigateToStatistics: LiveData<Event<Boolean>> = _navigateToStatistics
 
@@ -25,6 +28,7 @@ class GameDialogModelView: BaseViewModel() {
 
     private fun onSuccess(paragraph: GameResult){
         Log.i("kkk",paragraph.toString())
+        _lastGame.postValue(paragraph)
     }
 
     private fun onFail(throwable: Throwable){

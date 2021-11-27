@@ -4,7 +4,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="type">type...</string>
     <string name="typing_tracker">Typing Tracker</string>
+    <string name="correct_characters">Correct Characters</string>
+    <string name="wrong_characters">Wrong Characters</string>
+    <string name="accuracy">Accuracy</string>
+    <string name="wpm">WPM</string>
     <string name="statistics">Statistics</string>
+    <string name="again">Again</string>
 
 
     <string-array name="levels">

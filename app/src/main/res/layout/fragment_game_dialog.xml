@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.typing_tracker.ui.home.dialog.GameDialogModelView" />
@@ -12,10 +14,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="24dp"
         android:background="@drawable/shape_rounded_dialog"
         android:paddingTop="@dimen/padding_normal"
-        >
+        android:paddingBottom="24dp">
 
 
         <TextView
@@ -49,10 +50,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="33"
+            android:text="@{String.valueOf(viewModel.lastGame.keyStrokes)}"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_time" />
+            app:layout_constraintTop_toBottomOf="@+id/text_time"
+            tools:text="33" />
 
         <TextView
             android:id="@+id/text_correct_characters"
@@ -60,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="correctCharacters"
+            android:text="@string/correct_characters"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/text_key_strokes"
             app:layout_constraintTop_toBottomOf="@+id/text_key_strokes" />
@@ -71,10 +73,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="33"
+            android:text="@{String.valueOf(viewModel.lastGame.correctCharacters)}"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@+id/key_strokes"
-            app:layout_constraintTop_toBottomOf="@+id/key_strokes" />
+            app:layout_constraintTop_toBottomOf="@+id/key_strokes"
+            tools:text="33" />
 
         <TextView
             android:id="@+id/text_wrong_characters"
@@ -82,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="wrongCharacters"
+            android:text="@string/wrong_characters"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/text_correct_characters"
             app:layout_constraintTop_toBottomOf="@+id/text_correct_characters" />
@@ -94,11 +97,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="33"
+            android:text="@{String.valueOf(viewModel.lastGame.wrongCharacters)}"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@+id/correct_characters"
             app:layout_constraintTop_toBottomOf="@+id/correct_characters"
-            />
+            tools:text="33" />
 
         <TextView
             android:id="@+id/text_accuracy"
@@ -106,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="accuracy"
+            android:text="@string/accuracy"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/text_wrong_characters"
             app:layout_constraintTop_toBottomOf="@+id/text_wrong_characters" />
@@ -117,11 +120,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="33"
+            android:text='@{String.valueOf(viewModel.lastGame.accuracy) + "%"}'
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@+id/wrong_characters"
             app:layout_constraintTop_toBottomOf="@+id/wrong_characters"
-            />
+            tools:text="33" />
 
         <TextView
             android:id="@+id/text_wpm"
@@ -129,7 +132,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="wpm"
+            android:text="@string/wpm"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/text_accuracy"
             app:layout_constraintTop_toBottomOf="@+id/text_accuracy" />
@@ -141,26 +144,25 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="33"
+            android:text="@{String.valueOf(viewModel.lastGame.wpm)}"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@+id/accuracy"
             app:layout_constraintTop_toBottomOf="@+id/accuracy"
-            />
+            tools:text="33" />
 
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/main_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Again"
             android:background="@drawable/shape_rounded_dialog"
-            android:onClick="@{() -> viewModel.onClickedAgain()}"
             android:fontFamily="@font/montserrat_bold"
+            android:onClick="@{() -> viewModel.onClickedAgain()}"
+            android:text="@string/again"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_wpm"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/text_wpm" />
 
         <TextView
             android:id="@+id/follow_order"
@@ -168,8 +170,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/montserrat"
-            android:text="Statistics"
             android:onClick="@{() -> viewModel.onClickedStatistics()}"
+            android:text="@string/statistics"
             app:layout_constraintEnd_toEndOf="@+id/main_button"
             app:layout_constraintStart_toStartOf="@+id/main_button"
             app:layout_constraintTop_toBottomOf="@+id/main_button" />
