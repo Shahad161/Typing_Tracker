@@ -13,6 +13,5 @@ class SpeedFragment: BaseFragment<FragmentSpeedBinding, SpeedViewModel>() {
     }
 
     override fun setUpBinding() {
-
     }
 }

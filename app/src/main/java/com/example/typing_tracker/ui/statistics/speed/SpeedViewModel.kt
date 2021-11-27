@@ -1,6 +1,10 @@
 package com.example.typing_tracker.ui.statistics.speed
 
+import android.util.Log
+import androidx.lifecycle.*
+import com.example.typing_tracker.model.Repository
 import com.example.typing_tracker.ui.base.BaseViewModel
+import com.example.typing_tracker.util.Constants
 
 class SpeedViewModel: BaseViewModel() {
 

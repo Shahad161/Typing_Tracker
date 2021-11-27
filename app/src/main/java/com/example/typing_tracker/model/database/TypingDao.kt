@@ -19,6 +19,13 @@ interface TypingDao {
     @Query("SELECT * FROM CHARACTER_TABLE WHERE id = :id")
     fun getCharacterStatistics(id: Int) : Single<Character>
 
+    @Query("SELECT wpm FROM GAME_RESULT_TABLE")
+    fun getSpeed(): Single<Array<Double>>
+
+    @Query("SELECT accuracy FROM GAME_RESULT_TABLE")
+    fun getAccuracy(): Single<Array<Double>>
+
+
 
     @Query("SELECT paragraph FROM PARAGRAPH_TABLE WHERE difficulty = :difficulty ORDER BY random() LIMIT 1")
     fun getParagraphByDifficulty(difficulty: Difficulty): Single<String>

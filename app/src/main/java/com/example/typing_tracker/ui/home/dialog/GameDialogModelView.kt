@@ -26,8 +26,8 @@ class GameDialogModelView: BaseViewModel() {
     }
 
 
-    private fun onSuccess(paragraph: GameResult){
-        _lastGame.postValue(paragraph)
+    private fun onSuccess(gameResult: GameResult){
+        _lastGame.postValue(gameResult)
     }
 
     private fun onFail(throwable: Throwable){

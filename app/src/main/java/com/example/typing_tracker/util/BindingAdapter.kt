@@ -4,10 +4,8 @@ import android.text.Html
 import android.view.View
 import android.widget.*
 import androidx.databinding.*
-import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
-import com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
-import com.github.aachartmodel.aainfographics.aachartcreator.AAOptions
-import com.github.aachartmodel.aainfographics.aachartcreator.AASeriesElement
+import androidx.lifecycle.LiveData
+import com.github.aachartmodel.aainfographics.aachartcreator.*
 import com.github.aachartmodel.aainfographics.aaoptionsmodel.*
 import com.github.aachartmodel.aainfographics.aatools.AAJSStringPurer
 
