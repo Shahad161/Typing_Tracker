@@ -43,6 +43,11 @@ class GameDialogFragment: DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         dialog?.setCancelable(true)
         observeEvents()
+        setUp()
+    }
+
+    private fun setUp(){
+        viewModel.getLastGameResult()
     }
 
 

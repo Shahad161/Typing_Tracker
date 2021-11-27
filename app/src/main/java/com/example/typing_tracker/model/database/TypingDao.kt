@@ -13,6 +13,9 @@ interface TypingDao {
     @Query("SELECT * FROM GAME_RESULT_TABLE ORDER BY date DESC")
     fun getAllGamesResults() : Single<List<GameResult>>
 
+    @Query("SELECT * FROM GAME_RESULT_TABLE ORDER BY date DESC LIMIT 1")
+    fun getLastGamesResults() : Single<GameResult>
+
     @Query("SELECT * FROM CHARACTER_TABLE WHERE id = :id")
     fun getCharacterStatistics(id: Int) : Single<Character>
 

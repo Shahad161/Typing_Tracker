@@ -16,12 +16,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(){
     override val useActivityViewModel: Boolean =false
 
     override fun observeEvents() {
-        with(viewModel){
-            //will rewritten when complete dialog
-            endGameEvent.observeEvent(this@HomeFragment){
-                binding.recyclerView.goToFragment(HomeFragmentDirections.actionHomeFragmentToGameDialogFragment())
-            }
-
+        viewModel.endGameEvent.observeEvent(this@HomeFragment){
+            view?.goToFragment(HomeFragmentDirections.actionHomeFragmentToGameDialogFragment())
         }
     }
 
