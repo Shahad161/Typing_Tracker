@@ -4,7 +4,7 @@ import com.example.typing_tracker.ui.base.BaseViewModel
 
 class SpeedViewModel: BaseViewModel() {
 
-    val data = arrayOf(
+    val charactersSpeedData = arrayOf(
         arrayOf("A", 1000),
         arrayOf("B", 575),
         arrayOf("C", 523),

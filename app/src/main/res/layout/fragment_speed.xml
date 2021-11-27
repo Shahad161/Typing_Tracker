@@ -57,7 +57,7 @@
             <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
                 android:id="@+id/bar_chart"
                 android:layout_width="match_parent"
-                app:data="@{viewModel.data}"
+                app:data="@{viewModel.charactersSpeedData}"
                 app:legendTitle='@{"Characters"}'
                 app:title='@{"Speed per Character"}'
                 app:chartType="@{chartType.Column}"

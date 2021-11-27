@@ -4,7 +4,7 @@ import com.example.typing_tracker.ui.base.BaseViewModel
 
 class AccuracyViewModel: BaseViewModel() {
 
-    val data = arrayOf(
+    val charactersAccuracyData = arrayOf(
         arrayOf("A", 1000),
         arrayOf("B", 575),
         arrayOf("C", 523),
@@ -27,7 +27,7 @@ class AccuracyViewModel: BaseViewModel() {
         arrayOf("T", 117)
     )
 
-    val speedData = arrayOf(
+    val accuracyData = arrayOf(
         0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5
     )
 }

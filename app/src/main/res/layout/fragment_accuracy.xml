@@ -33,9 +33,9 @@
             <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
                 android:id="@+id/line_chart"
                 android:layout_width="match_parent"
-                app:data="@{viewModel.speedData}"
-                app:legendTitle='@{"WPM"}'
-                app:title='@{"Typing Speed"}'
+                app:data="@{viewModel.accuracyData}"
+                app:legendTitle='@{"Accuracy"}'
+                app:title='@{"Typing Accuracy"}'
                 app:chartType="@{chartType.Line}"
                 android:layout_height="match_parent"
                 tools:ignore="MissingClass" />
@@ -57,9 +57,9 @@
             <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
                 android:id="@+id/bar_chart"
                 android:layout_width="match_parent"
-                app:data="@{viewModel.data}"
+                app:data="@{viewModel.charactersAccuracyData}"
                 app:legendTitle='@{"Characters"}'
-                app:title='@{"Speed per Character"}'
+                app:title='@{"Accuracy per Character"}'
                 app:chartType="@{chartType.Column}"
                 android:layout_height="match_parent"
                 tools:ignore="MissingClass" />
