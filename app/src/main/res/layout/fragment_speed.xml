@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.typing_tracker.ui.statistics.speed.SpeedViewModel" />
+
+        <variable
+            name="chartType"
+            type="com.github.aachartmodel.aainfographics.aachartcreator.AAChartType" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
+                android:id="@+id/line_chart"
+                android:layout_width="match_parent"
+                app:data="@{viewModel.speedData}"
+                app:legendTitle='@{"WPM"}'
+                app:title='@{"Typing Speed"}'
+                app:chartType="@{chartType.Line}"
+                android:layout_height="match_parent"
+                tools:ignore="MissingClass" />
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView">
+            <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
+                android:id="@+id/bar_chart"
+                android:layout_width="match_parent"
+                app:data="@{viewModel.charactersSpeedData}"
+                app:legendTitle='@{"Characters"}'
+                app:title='@{"Speed per Character"}'
+                app:chartType="@{chartType.Column}"
+                android:layout_height="match_parent"
+                tools:ignore="MissingClass" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
