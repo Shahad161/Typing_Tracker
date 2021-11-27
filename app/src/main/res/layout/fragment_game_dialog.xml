@@ -13,6 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="24dp"
+        android:background="@drawable/shape_rounded_dialog"
         android:paddingTop="@dimen/padding_normal"
         >
 
@@ -34,10 +36,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="keyStrokes"
+            android:layout_marginEnd="180dp"
             android:fontFamily="@font/montserrat_bold"
+            android:text="keyStrokes"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/key_strokes"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_time" />
+
+        <TextView
+            android:id="@+id/key_strokes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="33"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_time" />
 
         <TextView
@@ -51,6 +66,16 @@
             app:layout_constraintStart_toStartOf="@+id/text_key_strokes"
             app:layout_constraintTop_toBottomOf="@+id/text_key_strokes" />
 
+        <TextView
+            android:id="@+id/correct_characters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="33"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/key_strokes"
+            app:layout_constraintTop_toBottomOf="@+id/key_strokes" />
 
         <TextView
             android:id="@+id/text_wrong_characters"
@@ -65,6 +90,18 @@
 
 
         <TextView
+            android:id="@+id/wrong_characters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="33"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/correct_characters"
+            app:layout_constraintTop_toBottomOf="@+id/correct_characters"
+            />
+
+        <TextView
             android:id="@+id/text_accuracy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,16 +113,40 @@
             app:layout_constraintTop_toBottomOf="@+id/text_wrong_characters" />
 
         <TextView
+            android:id="@+id/accuracy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="33"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/wrong_characters"
+            app:layout_constraintTop_toBottomOf="@+id/wrong_characters"
+            />
+
+        <TextView
             android:id="@+id/text_wpm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="wpm"
-
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/text_accuracy"
             app:layout_constraintTop_toBottomOf="@+id/text_accuracy" />
+
+
+        <TextView
+            android:id="@+id/wpm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="33"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/accuracy"
+            app:layout_constraintTop_toBottomOf="@+id/accuracy"
+            />
 
 
         <androidx.appcompat.widget.AppCompatButton
@@ -94,6 +155,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Again"
+            android:background="@drawable/shape_rounded_dialog"
             android:onClick="@{() -> viewModel.onClickedAgain()}"
             android:fontFamily="@font/montserrat_bold"
             app:layout_constraintEnd_toEndOf="parent"

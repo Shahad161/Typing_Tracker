@@ -19,7 +19,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(){
         with(viewModel){
             //will rewritten when complete dialog
             endGameEvent.observeEvent(this@HomeFragment){
-                binding.recyclerView.goToFragment(HomeFragmentDirections.actionHomeFragmentToStatisticsFragment())
+                binding.recyclerView.goToFragment(HomeFragmentDirections.actionHomeFragmentToGameDialogFragment())
             }
 
         }
