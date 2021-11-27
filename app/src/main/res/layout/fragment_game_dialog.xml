@@ -1,21 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="viewModel"
+            type="com.example.typing_tracker.ui.home.dialog.GameDialogModelView" />
 
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.home.GameDialogFragment">
+        android:paddingTop="@dimen/padding_normal"
+        >
 
-        <!-- TODO: Update blank fragment layout -->
+
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:id="@+id/text_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="00:00"
+            android:textAllCaps="true"
+            android:textSize="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/text_key_strokes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="keyStrokes"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_time" />
+
+        <TextView
+            android:id="@+id/text_correct_characters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="correctCharacters"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/text_key_strokes"
+            app:layout_constraintTop_toBottomOf="@+id/text_key_strokes" />
+
+
+        <TextView
+            android:id="@+id/text_wrong_characters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="wrongCharacters"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/text_correct_characters"
+            app:layout_constraintTop_toBottomOf="@+id/text_correct_characters" />
+
+
+        <TextView
+            android:id="@+id/text_accuracy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="accuracy"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/text_wrong_characters"
+            app:layout_constraintTop_toBottomOf="@+id/text_wrong_characters" />
+
+        <TextView
+            android:id="@+id/text_wpm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="wpm"
+
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/text_accuracy"
+            app:layout_constraintTop_toBottomOf="@+id/text_accuracy" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/main_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Again"
+            android:onClick="@{() -> viewModel.onClickedAgain()}"
+            android:fontFamily="@font/montserrat_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_wpm"
+            />
+
+        <TextView
+            android:id="@+id/follow_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Statistics"
+            android:onClick="@{() -> viewModel.onClickedStatistics()}"
+            app:layout_constraintEnd_toEndOf="@+id/main_button"
+            app:layout_constraintStart_toStartOf="@+id/main_button"
+            app:layout_constraintTop_toBottomOf="@+id/main_button" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

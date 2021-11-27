@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottom_nav_graph"
-    app:startDestination="@id/statisticsFragment">
+    app:startDestination="@id/gameDialogFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_homeFragment_to_statisticsFragment"
             app:destination="@id/statisticsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_gameDialogFragment"
+            app:destination="@id/gameDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/startFragment"
@@ -33,4 +36,18 @@
         android:label="StatisticsFragment"
         tools:layout="@layout/fragment_statistics"
         />
+    <fragment
+        android:id="@+id/gameDialogFragment"
+        android:name="com.example.typing_tracker.ui.home.dialog.GameDialogFragment"
+        android:label="GameDialogFragment"
+        tools:layout="@layout/fragment_game_dialog"
+
+        >
+        <action
+            android:id="@+id/action_gameDialogFragment_to_statisticsFragment"
+            app:destination="@id/statisticsFragment" />
+        <action
+            android:id="@+id/action_gameDialogFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
