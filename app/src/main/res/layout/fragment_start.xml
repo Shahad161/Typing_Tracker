@@ -19,8 +19,8 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="213dp"
-            android:layout_height="83dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
             android:src="@drawable/ic_splash"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -38,58 +38,56 @@
 
         <TextView
 
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="Difficulty"
             android:textColor="@color/primary_text_color"
-            android:textSize="24dp"
+            android:textSize="22sp"
             app:layout_constraintBottom_toTopOf="@+id/item_spinner"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/item_spinner" />
 
         <Spinner
             android:id="@+id/item_spinner"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginHorizontal="32dp"
-            android:layout_marginBottom="32dp"
+            android:background="@drawable/spinner_background"
+            android:entries="@array/levels"
             android:gravity="center_vertical"
+            android:layout_marginBottom="16dp"
             android:spinnerMode="dropdown"
             android:textSize="16sp"
-            android:entries="@array/levels"
-            app:selectedValue="@={viewModel.level}"
             app:layout_constraintBottom_toTopOf="@+id/start_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:background="#898A8D"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_spinner" />
+            app:selectedValue="@={viewModel.difficulity}" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/start_btn"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
             android:layout_marginBottom="40dp"
             android:background="@drawable/start_button"
-            android:text="Start"
             android:onClick="@{() -> viewModel.onClickStartGame()}"
+            android:text="Start Game"
             android:textColor="@color/secondary_text_color"
-            android:textSize="16dp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="@+id/item_spinner"
+            app:layout_constraintStart_toStartOf="@+id/item_spinner" />
+
+        <ImageView
+            android:id="@+id/statstics_image_view"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:onClick="@{() -> viewModel.onClickStatistic()}"
+            android:src="@drawable/ic_baseline_insert_chart_outlined_24"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="@+id/item_spinner"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:tint="@color/primary_button_background" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
