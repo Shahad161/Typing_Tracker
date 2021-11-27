@@ -3,8 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/projects/Typing_Tracker/app/src/main/res/layout/fragment_accuracy.xml" value="0.23505434782608695" />
+        <entry key="..\:/projects/Typing_Tracker/app/src/main/res/layout/fragment_game_dialog.xml" value="0.23505434782608695" />
         <entry key="..\:/projects/Typing_Tracker/app/src/main/res/layout/fragment_history.xml" value="0.21920289855072464" />
         <entry key="..\:/projects/Typing_Tracker/app/src/main/res/layout/fragment_home.xml" value="0.1793478260869565" />
+        <entry key="..\:/projects/Typing_Tracker/app/src/main/res/layout/fragment_speed.xml" value="0.23505434782608695" />
+        <entry key="..\:/projects/Typing_Tracker/app/src/main/res/layout/fragment_start.xml" value="0.12360688956433637" />
+        <entry key="..\:/projects/Typing_Tracker/app/src/main/res/layout/fragment_statistics.xml" value="0.12360688956433637" />
+        <entry key="..\:/projects/Typing_Tracker/app/src/main/res/layout/item_paragraph.xml" value="0.12360688956433637" />
       </map>
     </option>
   </component>
