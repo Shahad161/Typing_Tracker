@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F4F5F9"
+        android:background="@color/primary_background"
         tools:context=".ui.home.HomeFragment">
 
         <androidx.appcompat.widget.AppCompatButton
@@ -42,12 +42,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="48sp"
-
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appCompatButton"
-            app:startCounter="@{viewModel.startCounter}" />
+            app:startCounter="@{viewModel.startCounter}"
+            />
 
         <TextView
             android:id="@+id/recyclerView"
@@ -56,7 +56,7 @@
             android:layout_marginVertical="@dimen/margin_large"
             android:lineSpacingMultiplier="1.5"
             android:padding="8dp"
-            android:textColor="@color/black"
+            android:textColor="@color/primary_text_color"
             app:layout_constraintEnd_toEndOf="@+id/edit"
             app:layout_constraintStart_toStartOf="@+id/edit"
             app:layout_constraintTop_toBottomOf="@+id/count_up_timer"

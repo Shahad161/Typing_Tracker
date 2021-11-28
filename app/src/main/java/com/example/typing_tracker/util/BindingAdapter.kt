@@ -1,5 +1,7 @@
 package com.example.typing_tracker.util
 
+import android.graphics.Color.BLACK
+import android.graphics.Color.BLUE
 import android.text.Html
 import android.view.View
 import android.widget.*
