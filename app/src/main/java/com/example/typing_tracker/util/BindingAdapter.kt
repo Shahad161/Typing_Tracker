@@ -75,3 +75,10 @@ fun setupChart(chart: AAChartView,
 
     chart.aa_drawChartWithChartOptions(aaOptions)
 }
+
+@BindingAdapter(value = ["app:clear"])
+fun clearEditText(view: EditText , clear: Boolean){
+    if (clear)
+        view.text.clear()
+
+}

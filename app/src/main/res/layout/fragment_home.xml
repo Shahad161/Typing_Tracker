@@ -31,6 +31,7 @@
             android:layout_height="32dp"
             android:layout_marginEnd="16dp"
             android:rotationY="180"
+            android:onClick="@{() -> viewModel.onClickRestart()}"
             android:src="@drawable/ic_baseline_restart_24"
             app:layout_constraintBottom_toBottomOf="@+id/appCompatButton"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +62,8 @@
             app:layout_constraintEnd_toEndOf="@+id/edit"
             app:layout_constraintStart_toStartOf="@+id/edit"
             app:layout_constraintTop_toBottomOf="@+id/count_up_timer"
-            app:setParagraph="@{viewModel.checkInput}" />
+            app:setParagraph="@{viewModel.checkInput}"
+            />
 
         <EditText
             android:id="@+id/edit"
@@ -73,6 +75,7 @@
             android:inputType="textNoSuggestions"
             android:maxLength="@{viewModel.originalText.length()}"
             android:padding="@dimen/padding_normal"
+            app:clear="@{viewModel.clearEditText}"
             android:text="@={viewModel.enterText}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -8,6 +8,9 @@ import com.example.typing_tracker.ui.base.BaseFragment
 import com.example.typing_tracker.util.*
 
 
+
+
+
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(){
 
     override val layoutId: Int = R.layout.fragment_home
@@ -16,6 +19,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(){
     override val useActivityViewModel: Boolean =false
 
     override fun observeEvents() {
+
         viewModel.endGameEvent.observeEvent(this@HomeFragment){
             view?.goToFragment(HomeFragmentDirections.actionHomeFragmentToGameDialogFragment())
         }

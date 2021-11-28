@@ -20,7 +20,7 @@ class HomeViewModel: BaseViewModel(){
     private var incorrectChar = 0
     private var level : Difficulty? = null
 
-    val enterText=MutableLiveData<String?>()
+    val enterText=MutableLiveData("")
     val originalText = MutableLiveData<String>()
     val endGameEvent= MutableLiveData<Event<GameResult>>()
 
@@ -29,6 +29,7 @@ class HomeViewModel: BaseViewModel(){
 
     private val _startCounter =MutableLiveData(false)
     val startCounter : LiveData<Boolean> = _startCounter
+
 
     val checkInput :LiveData<String?> = MediatorLiveData<String?>().apply {
         addSource(originalText){
@@ -56,22 +57,26 @@ class HomeViewModel: BaseViewModel(){
     }
 
     private fun onEnterDigit(newText:String , post :(String) -> Unit){
-        originalText.value?.let { text ->
-            Date().time.also{ currentTime ->
-                updateStatistics(newText, text , currentTime)
-                updateLastTime(currentTime)
-                post(updatedText(text,newText,text[newText.lastIndex]))
-                continueGame(text,newText)
+        if (newText != ""){
+            originalText.value?.let { text ->
+                Date().time.also{ currentTime ->
+                    updateStatistics(newText, text , currentTime)
+                    updateLastTime(currentTime)
+                    post(updatedText(text,newText,text[newText.lastIndex]))
+                    continueGame(text,newText)
+                }
             }
         }
+
     }
 
-    private fun updateStatistics(newText:String, text: String, currentTime: Long){
+    private fun updateStatistics(newText:String, text: String, currentTime: Long) {
         with(getSpeed(currentTime).toDouble()) {
             if(text[newText.lastIndex].checkIfCorrectLastChar(newText)){
                 storeCorrectChar(newText.last(),this)
                 correctChar ++
-            }else {
+            }
+            else {
                 storeInCorrectChar(newText.last(),this)
                 incorrectChar ++
             }
@@ -88,10 +93,8 @@ class HomeViewModel: BaseViewModel(){
         observe(Repository.insertCharacter(getCharacter(lastChar,speed,false)))
     }
 
-    //must pass isCorrect value when change schema
     private fun getCharacter(char: Char ,speed: Double ,isCorrect: Boolean) =
         Character(
-            id= 0, // delete this line
             character = "$char",
             isCorrect = isCorrect,
             speed = speed,
@@ -136,8 +139,14 @@ class HomeViewModel: BaseViewModel(){
 
 
     fun getParagraph(level: Difficulty){
-        this.level =level
+        this.level = level
         observe(Repository.getParagraphByDifficulty(level),::onSuccess,::onFail)
+    }
+
+    var clearEditText = MutableLiveData<Boolean>()
+    fun onClickRestart(){
+        level?.let { getParagraph(it) }
+        clearEditText.postValue(true)
     }
 
     private fun onSuccess(paragraph:String){
