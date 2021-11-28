@@ -1,5 +1,7 @@
 package com.example.typing_tracker.util
 
+import android.graphics.Color.BLACK
+import android.graphics.Color.BLUE
 import android.text.Html
 import android.view.View
 import android.widget.*
@@ -89,4 +91,10 @@ fun clearEditText(view: EditText , clear: Boolean){
     if (clear)
         view.text.clear()
 
+}
+
+
+@BindingAdapter(value = ["app:formatString"])
+fun formatString(textView: TextView , accuracy : Double) {
+    textView.text = String.format("%.2f",accuracy)
 }
