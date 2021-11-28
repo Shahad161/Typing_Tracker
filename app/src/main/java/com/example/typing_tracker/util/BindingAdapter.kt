@@ -75,3 +75,8 @@ fun setupChart(chart: AAChartView,
 
     chart.aa_drawChartWithChartOptions(aaOptions)
 }
+
+@BindingAdapter(value = ["app:formatString"])
+fun formatString(textView: TextView , accuracy : Double) {
+    textView.text = String.format("%.2f",accuracy)
+}
