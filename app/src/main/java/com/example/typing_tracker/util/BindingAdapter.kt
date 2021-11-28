@@ -4,10 +4,7 @@ import android.text.Html
 import android.view.View
 import android.widget.*
 import androidx.databinding.*
-import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
-import com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
-import com.github.aachartmodel.aainfographics.aachartcreator.AAOptions
-import com.github.aachartmodel.aainfographics.aachartcreator.AASeriesElement
+import com.github.aachartmodel.aainfographics.aachartcreator.*
 import com.github.aachartmodel.aainfographics.aaoptionsmodel.*
 import com.github.aachartmodel.aainfographics.aatools.AAJSStringPurer
 
@@ -56,7 +53,6 @@ fun setupChart(chart: AAChartView,
                legendTitle: String,
                chartType: AAChartType,
                chartTitle: String
-
 ) {
 
     val pureJSStr: String = AAJSStringPurer.pureJavaScriptFunctionString(
@@ -67,23 +63,12 @@ fun setupChart(chart: AAChartView,
         .data(data)
 
     val aaOptions: AAOptions = AAOptions()
-        .chart(
-            AAChart()
-                .type(chartType)
-                .scrollablePlotArea(
-                    AAScrollablePlotArea()
-                        .minWidth(500)
-                )
-        )
-        .title(
-            AATitle()
-                .text(chartTitle))
-        .subtitle(
-            AASubtitle()
-                .text(pureJSStr))
-        .xAxis(
-            AAXAxis()
-                .type("category"))
+        .chart(AAChart().type(chartType)
+            .scrollablePlotArea(AAScrollablePlotArea().minWidth(500)))
+
+        .title(AATitle().text(chartTitle))
+        .subtitle(AASubtitle().text(pureJSStr))
+        .xAxis(AAXAxis().type("category"))
         .series(arrayOf(element))
 
     chart.aa_drawChartWithChartOptions(aaOptions)
