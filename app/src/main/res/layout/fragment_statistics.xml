@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.example.typing_tracker.ui.statistics.StatisticsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,6 +20,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginStart="16dp"
+            android:onClick="@{() -> viewModel.onClickBackButton() }"
             android:layout_marginTop="16dp"
             android:background="@drawable/button"
             app:layout_constraintStart_toStartOf="parent"

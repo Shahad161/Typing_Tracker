@@ -24,6 +24,9 @@ class HomeViewModel: BaseViewModel(){
     val originalText = MutableLiveData<String>()
     val endGameEvent= MutableLiveData<Event<GameResult>>()
 
+    private val _clickBackButton = MutableLiveData<Boolean>()
+    val clickBackButton: LiveData<Boolean> = _clickBackButton
+
     private val _startCounter =MutableLiveData(false)
     val startCounter : LiveData<Boolean> = _startCounter
 
@@ -143,6 +146,10 @@ class HomeViewModel: BaseViewModel(){
 
     private fun onFail(throwable: Throwable){
         Log.i(Constants.LOG_TAG,throwable.message.toString())
+    }
+
+    fun onClickBackButton(){
+        _clickBackButton.postValue(true)
     }
 
 }

@@ -4,8 +4,10 @@ package com.example.typing_tracker.ui.statistics
 import com.example.typing_tracker.R
 import com.example.typing_tracker.databinding.FragmentStatisticsBinding
 import com.example.typing_tracker.ui.base.BaseFragment
+import com.example.typing_tracker.ui.home.HomeFragmentDirections
 import com.example.typing_tracker.ui.statistics.accuracy.AccuracyFragment
 import com.example.typing_tracker.ui.statistics.speed.SpeedFragment
+import com.example.typing_tracker.util.goToFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
 class StatisticsFragment : BaseFragment<FragmentStatisticsBinding, StatisticsViewModel>(){
@@ -17,7 +19,9 @@ class StatisticsFragment : BaseFragment<FragmentStatisticsBinding, StatisticsVie
     override val viewModelClass = StatisticsViewModel::class.java
 
     override fun observeEvents() {
-
+        viewModel.clickBackButton.observe(this){
+            view?.goToFragment(StatisticsFragmentDirections.actionStatisticsFragmentToStartFragment())
+        }
     }
 
     override fun setUpBinding() {

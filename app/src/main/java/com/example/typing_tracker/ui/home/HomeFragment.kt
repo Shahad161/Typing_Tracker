@@ -19,6 +19,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(){
         viewModel.endGameEvent.observeEvent(this@HomeFragment){
             view?.goToFragment(HomeFragmentDirections.actionHomeFragmentToGameDialogFragment())
         }
+
+        viewModel.clickBackButton.observe(this@HomeFragment){
+            view?.goToFragment(HomeFragmentDirections.actionHomeFragmentToStartFragment())
+        }
     }
 
     override fun setUpBinding() {

@@ -1,7 +1,6 @@
 package com.example.typing_tracker.model.database
 
-import androidx.room.Dao
-import androidx.room.Insert
+import androidx.room.*
 import androidx.room.Query
 import com.example.typing_tracker.model.entities.*
 import com.example.typing_tracker.util.Difficulty

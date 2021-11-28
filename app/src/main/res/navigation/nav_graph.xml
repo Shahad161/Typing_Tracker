@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_homeFragment_to_gameDialogFragment"
             app:destination="@id/gameDialogFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_startFragment"
+            app:destination="@id/startFragment" />
     </fragment>
     <fragment
         android:id="@+id/startFragment"
@@ -38,7 +41,11 @@
         android:name="com.example.typing_tracker.ui.statistics.StatisticsFragment"
         android:label="StatisticsFragment"
         tools:layout="@layout/fragment_statistics"
-        />
+        >
+        <action
+            android:id="@+id/action_statisticsFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
     <dialog
         android:id="@+id/gameDialogFragment"
         android:name="com.example.typing_tracker.ui.home.dialog.GameDialogFragment"
