@@ -10,6 +10,7 @@
     <string name="wpm">WPM</string>
     <string name="statistics">Statistics</string>
     <string name="again">Again</string>
+    <string name="key_strokes">key Strokes</string>
 
 
     <string-array name="levels">
