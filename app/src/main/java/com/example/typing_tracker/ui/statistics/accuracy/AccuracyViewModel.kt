@@ -1,8 +1,11 @@
 package com.example.typing_tracker.ui.statistics.accuracy
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.example.typing_tracker.model.Repository
 import com.example.typing_tracker.ui.base.BaseViewModel
 
-class AccuracyViewModel: BaseViewModel() {
+class AccuracyViewModel : BaseViewModel() {
 
     val charactersAccuracyData = arrayOf(
         arrayOf("A", 1000),
@@ -27,7 +30,16 @@ class AccuracyViewModel: BaseViewModel() {
         arrayOf("T", 117)
     )
 
-    val accuracyData = arrayOf(
-        0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5
-    )
+    init {
+        observe(Repository.getAccuracy(), ::onSuccess, ::onError)
+    }
+
+    private fun onSuccess(data: Array<Double>) {
+        _accuracyData.postValue(data)
+    }
+
+    private fun onError(throwable: Throwable) {}
+
+    private val _accuracyData = MutableLiveData<Array<out Any>>()
+    val accuracyData: LiveData<Array<out Any>> = _accuracyData
 }

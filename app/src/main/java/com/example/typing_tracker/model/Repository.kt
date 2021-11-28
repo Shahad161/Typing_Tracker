@@ -10,8 +10,15 @@ object Repository {
 
     fun getAllGamesResults() = typingDao.getAllGamesResults()
     fun getLastGamesResults() = typingDao.getLastGamesResults()
+    fun getWpm() = typingDao.getSpeed()
+
+    fun getAccuracy() = typingDao.getAccuracy()
 
     fun getCharacterStatistics(characterId: Int) = typingDao.getCharacterStatistics(characterId)
+
+    fun getCharacterSpeed() =  typingDao.getCharactersSpeed()
+
+    fun getCharacters() = typingDao.getCharacters()
 
     fun getParagraphByDifficulty(difficulty: Difficulty) =
         typingDao.getParagraphByDifficulty(difficulty)

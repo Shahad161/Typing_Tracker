@@ -18,6 +18,17 @@ interface TypingDao {
     @Query("SELECT * FROM CHARACTER_TABLE WHERE id = :id")
     fun getCharacterStatistics(id: Int) : Single<Character>
 
+    @Query("SELECT wpm FROM GAME_RESULT_TABLE")
+    fun getSpeed(): Observable<Array<Double>>
+
+    @Query("SELECT accuracy FROM GAME_RESULT_TABLE")
+    fun getAccuracy(): Observable<Array<Double>>
+
+    @Query("SELECT avg(speed) FROM CHARACTER_TABLE WHERE isCorrect = 1 GROUP BY character ORDER BY character")
+    fun getCharactersSpeed(): Single<Array<Double>>
+
+    @Query("SELECT character FROM CHARACTER_TABLE WHERE isCorrect = 1 GROUP BY character ORDER BY character")
+    fun getCharacters(): Single<Array<String>>
 
     @Query("SELECT paragraph FROM PARAGRAPH_TABLE WHERE difficulty = :difficulty ORDER BY random() LIMIT 1")
     fun getParagraphByDifficulty(difficulty: Difficulty): Single<String>

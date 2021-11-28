@@ -1,7 +1,5 @@
 package com.example.typing_tracker.util
 
-import android.graphics.Color.BLACK
-import android.graphics.Color.BLUE
 import android.text.Html
 import android.view.View
 import android.widget.*
@@ -51,26 +49,36 @@ fun startCounter(view: Chronometer , isBegin: Boolean){
 
 @BindingAdapter(value = ["app:data", "app:legendTitle", "app:chartType", "app:title"])
 fun setupChart(chart: AAChartView,
-               data: Array<Any>,
-               legendTitle: String,
-               chartType: AAChartType,
-               chartTitle: String
+               data: Array<Any>?,
+               legendTitle: String?,
+               chartType: AAChartType?,
+               chartTitle: String?
+
 ) {
 
-    val pureJSStr: String = AAJSStringPurer.pureJavaScriptFunctionString(
-        "Source: <a href=\"https://highcharts.uservoice.com/forums/55896-highcharts-javascript-api\">UserTests</a>")
-
-    val element: AASeriesElement = AASeriesElement()
+    val element = AASeriesElement()
+    data?.let {
+        element
         .name(legendTitle)
         .data(data)
 
-    val aaOptions: AAOptions = AAOptions()
-        .chart(AAChart().type(chartType)
-            .scrollablePlotArea(AAScrollablePlotArea().minWidth(500)))
+    }
 
-        .title(AATitle().text(chartTitle))
-        .subtitle(AASubtitle().text(pureJSStr))
-        .xAxis(AAXAxis().type("category"))
+    val aaOptions: AAOptions = AAOptions()
+        .chart(
+            AAChart()
+                .type(chartType)
+                .scrollablePlotArea(
+                    AAScrollablePlotArea()
+                        .minWidth(500)
+                )
+        )
+        .title(
+            AATitle()
+                .text(chartTitle))
+        .xAxis(
+            AAXAxis()
+                .type("category"))
         .series(arrayOf(element))
 
     chart.aa_drawChartWithChartOptions(aaOptions)
