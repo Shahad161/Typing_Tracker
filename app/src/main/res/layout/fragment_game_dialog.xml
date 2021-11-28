@@ -36,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="180dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="keyStrokes"
@@ -150,19 +151,21 @@
             app:layout_constraintTop_toBottomOf="@+id/accuracy"
             tools:text="33" />
 
-
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/main_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/shape_rounded_dialog"
-            android:fontFamily="@font/montserrat_bold"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/start_button"
             android:onClick="@{() -> viewModel.onClickedAgain()}"
             android:text="@string/again"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_wpm" />
+            app:layout_constraintTop_toBottomOf="@+id/text_wpm"
+            />
+
 
         <TextView
             android:id="@+id/follow_order"
