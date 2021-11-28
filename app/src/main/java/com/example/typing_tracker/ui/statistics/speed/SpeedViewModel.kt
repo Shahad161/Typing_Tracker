@@ -1,37 +1,33 @@
 package com.example.typing_tracker.ui.statistics.speed
 
 import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.typing_tracker.model.Repository
 import com.example.typing_tracker.ui.base.BaseViewModel
-import com.example.typing_tracker.util.Constants
 
 class SpeedViewModel: BaseViewModel() {
 
-    val charactersSpeedData = arrayOf(
-        arrayOf("A", 1000),
-        arrayOf("B", 575),
-        arrayOf("C", 523),
-        arrayOf("D", 427),
-        arrayOf("E", 399),
-        arrayOf("F", 309),
-        arrayOf("G", 278),
-        arrayOf("H", 239),
-        arrayOf("I", 235),
-        arrayOf("J", 203),
-        arrayOf("K", 182),
-        arrayOf("L", 157),
-        arrayOf("M", 149),
-        arrayOf("N", 144),
-        arrayOf("O", 143),
-        arrayOf("P", 137),
-        arrayOf("Q", 134),
-        arrayOf("R", 118),
-        arrayOf("S", 118),
-        arrayOf("T", 117)
-    )
+    val charactersSpeedData = MutableLiveData<Array<Double>>()
 
-    val speedData = arrayOf(
-        0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5
-    )
+    init {
+        observe(Repository.getWpm(), ::onSuccess, ::onFail)
+        observe(Repository.getCharacterSpeed(), ::onCharacterSpeedSuccess, ::onFail)
+    }
+
+    private fun onCharacterSpeedSuccess(data: Array<Double>) {
+        Log.v("kkk", data.toString())
+        charactersSpeedData.postValue(data)
+    }
+
+    private fun onSuccess(data: Array<out Any>) {
+        _speedData.postValue(data)
+    }
+
+    private fun onFail(throwable: Throwable) {}
+
+
+    private val _speedData = MutableLiveData<Array<out Any>>()
+    val speedData: LiveData<Array<out Any>> = _speedData
+
 }
