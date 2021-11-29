@@ -121,6 +121,7 @@ class HomeViewModel: BaseViewModel(){
             storeGame(this)
         }
         _startCounter.postValue(false)
+
     }
 
     private fun getGameResult() =
@@ -146,10 +147,12 @@ class HomeViewModel: BaseViewModel(){
 
     }
 
+    val again = MutableLiveData(false)
     var clearEditText = MutableLiveData<Boolean>()
     fun onClickRestart(){
         level?.let { getParagraph(it) }
         clearEditText.postValue(true)
+        again.postValue(true)
     }
 
     private fun onSuccess(paragraph:String){

@@ -52,6 +52,14 @@ fun startCounter(view: Chronometer , isBegin: Boolean){
         view.stop()
 }
 
+@BindingAdapter(value = ["app:again"])
+fun again(view: Chronometer , isBegin: Boolean){
+    if(isBegin) {
+        view.base = SystemClock.elapsedRealtime()
+        view.stop()
+    }
+}
+
 @BindingAdapter(value = ["app:data", "app:legendTitle", "app:chartType", "app:title"])
 fun setupChart(chart: AAChartView,
                data: Array<Any>?,
