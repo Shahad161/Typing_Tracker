@@ -20,7 +20,7 @@ class HomeViewModel: BaseViewModel(){
     private var incorrectChar = 0
     private var level : Difficulty? = null
 
-    val enterText=MutableLiveData("")
+    val enterText=MutableLiveData<String>()
     val originalText = MutableLiveData<String>()
     val endGameEvent= MutableLiveData<Event<GameResult>>()
 
@@ -120,6 +120,7 @@ class HomeViewModel: BaseViewModel(){
             endGameEvent.postValue(Event(this))
             storeGame(this)
         }
+        _startCounter.postValue(false)
     }
 
     private fun getGameResult() =
@@ -141,6 +142,8 @@ class HomeViewModel: BaseViewModel(){
     fun getParagraph(level: Difficulty){
         this.level = level
         observe(Repository.getParagraphByDifficulty(level),::onSuccess,::onFail)
+        _startCounter.postValue(false)
+
     }
 
     var clearEditText = MutableLiveData<Boolean>()

@@ -2,6 +2,7 @@ package com.example.typing_tracker.util
 
 import android.graphics.Color.BLACK
 import android.graphics.Color.BLUE
+import android.os.SystemClock
 import android.text.Html
 import android.view.View
 import android.widget.*
@@ -45,8 +46,10 @@ fun setParagraph(view :TextView , paragraph:String?){
 @BindingAdapter(value = ["app:startCounter"])
 fun startCounter(view: Chronometer , isBegin: Boolean){
     if(isBegin) {
+        view.base = SystemClock.elapsedRealtime()
         view.start()
-    }
+    }else
+        view.stop()
 }
 
 @BindingAdapter(value = ["app:data", "app:legendTitle", "app:chartType", "app:title"])

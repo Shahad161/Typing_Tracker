@@ -8,10 +8,10 @@ import com.example.typing_tracker.ui.base.BaseViewModel
 class AccuracyViewModel : BaseViewModel() {
 
     val charactersAccuracyData = arrayOf(
-        arrayOf("A", 1000),
+        arrayOf("A", 150),
         arrayOf("B", 575),
-        arrayOf("C", 523),
-        arrayOf("D", 427),
+        arrayOf("C", 503),
+        arrayOf("D", 407),
         arrayOf("E", 399),
         arrayOf("F", 309),
         arrayOf("G", 278),
@@ -19,15 +19,15 @@ class AccuracyViewModel : BaseViewModel() {
         arrayOf("I", 235),
         arrayOf("J", 203),
         arrayOf("K", 182),
-        arrayOf("L", 157),
+        arrayOf("L", 107),
         arrayOf("M", 149),
         arrayOf("N", 144),
         arrayOf("O", 143),
         arrayOf("P", 137),
-        arrayOf("Q", 134),
+        arrayOf("Q", 104),
         arrayOf("R", 118),
         arrayOf("S", 118),
-        arrayOf("T", 117)
+        arrayOf("T", 107)
     )
 
     init {
